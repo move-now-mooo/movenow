@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
   <script>
-    sessionStorage.setItem('gh-pages-redirect', location.href);
-    location.href = '/';
+    // Save the path the user tried to visit (e.g., /movenow/costi)
+    const path = window.location.pathname;
+    const repo = '/movenow'; // 👈 CHANGE THIS to your exact repo name
+    
+    // If we're on a sub-path that isn't the root, redirect to index.html with hash
+    if (path !== repo + '/' && path.startsWith(repo)) {
+      const hashPath = path.replace(repo, '');
+      window.location.href = repo + '/#' + hashPath;
+    }
   </script>
 </head>
-<body></body>
+<body>
+  <p>Redirecting to MoveNow! app...</p>
+</body>
 </html>
